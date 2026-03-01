@@ -308,7 +308,7 @@ export default function App() {
         setWorkerName('');
         setWorkerPhone('');
         setWorkerNote('');
-        alert('报名成功！（已通过 API 提交 Demo 数据）');
+        alert('报名成功！');
       })
       .catch(() => {
         alert('报名请求失败，请确认后端服务已启动（npm run server）。');
@@ -346,7 +346,7 @@ export default function App() {
         });
         setRole('worker');
         setSelectedJobId(created.id);
-        alert('岗位已发布！（已通过 API 写入 Demo 数据）');
+        alert('岗位已发布！');
       })
       .catch(() => {
         alert('岗位发布失败，请确认后端服务已启动（npm run server）。');
@@ -372,19 +372,19 @@ export default function App() {
       setAuthUser(user);
       setRole(user.role);
       setShowAuthModal(false);
-      alert('注册并登录成功！（当前为前端模拟流程）');
+      alert('注册并登录成功！');
       return;
     }
 
     if (!authUser) {
-      alert('当前为前端 Demo，请先切换到注册创建一个本地账号。');
+      alert('未找到账号，请先切换到注册创建账号。');
       return;
     }
 
     if (authUser.phone === phone && authUser.role === authFormRole) {
       setRole(authUser.role);
       setShowAuthModal(false);
-      alert('登录成功！（当前为前端模拟流程）');
+      alert('登录成功！');
     } else {
       alert('未找到匹配的本地账号，请确认角色和手机号，或切换到注册。');
     }
@@ -393,7 +393,7 @@ export default function App() {
   const handleLogout = () => {
     setAuthUser(null);
     setShowAuthModal(false);
-    alert('已退出登录（仅清除本地浏览器登录状态）。');
+    alert('已退出登录。');
   };
 
   const applicationsWithJob = useMemo(
@@ -436,39 +436,39 @@ export default function App() {
     >
       <section className="space-y-8">
         {/* 顶部大横幅：参考 job&talent 左右分栏 */}
-        <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-200/50 ring-1 ring-slate-900/5">
           <div className="grid md:grid-cols-2">
             {/* 左侧：灵人 */}
-            <div className="relative bg-[#FFE4C7] px-6 py-8 sm:px-10 sm:py-10 flex flex-col justify-between">
-              <div className="max-w-md space-y-3">
-                <div className="text-[11px] font-semibold tracking-wide text-slate-700">
+            <div className="relative bg-gradient-to-br from-amber-50 via-[#FFF5E6] to-[#FFE4C7] px-6 py-9 sm:px-10 sm:py-11 flex flex-col justify-between">
+              <div className="max-w-md space-y-4">
+                <div className="text-[10px] font-bold tracking-widest uppercase text-amber-700/90">
                   FOR JOB SEEKERS · 灵人
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 leading-snug">
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight tracking-tight">
                   在手机里找到
                   <br />
                   稳定灵活的工作
                 </h1>
-                <p className="text-sm text-slate-700 leading-relaxed">
+                <p className="text-sm text-slate-700/90 leading-relaxed">
                   附近真实用工机会，按小时结算，支持日结 / 周结。
                   无需简历，几步完成报名，随时开始赚钱。
                 </p>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-xs">
+              <div className="mt-7 flex flex-wrap gap-3 text-xs">
                 <button
                   type="button"
                   onClick={() => {
                     setRole('worker');
                     openAuthForRole('worker');
                   }}
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 font-medium text-white shadow-sm hover:bg-black"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 font-semibold text-white shadow-lg shadow-slate-900/25 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
                 >
                   立即登录 / 注册灵人端
                 </button>
                 <button
                   type="button"
                   onClick={() => scrollToMain()}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-400/60 px-5 py-2 font-medium text-slate-800 hover:bg-slate-900/5"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-slate-400/50 bg-white/60 px-6 py-2.5 font-semibold text-slate-800 hover:bg-slate-900/10 hover:border-slate-500/60 transition-all duration-200"
                 >
                   先看看岗位
                 </button>
@@ -476,29 +476,29 @@ export default function App() {
             </div>
 
             {/* 右侧：企业 */}
-            <div className="relative bg-[#00D3C0] px-6 py-8 sm:px-10 sm:py-10 flex flex-col justify-between text-slate-900">
-              <div className="max-w-md space-y-3">
-                <div className="text-[11px] font-semibold tracking-wide text-slate-900/80">
+            <div className="relative bg-gradient-to-br from-teal-50 via-[#E6FFFA] to-[#00D3C0]/90 px-6 py-9 sm:px-10 sm:py-11 flex flex-col justify-between text-slate-900">
+              <div className="max-w-md space-y-4">
+                <div className="text-[10px] font-bold tracking-widest uppercase text-teal-800/90">
                   FOR COMPANIES · 企业
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-semibold leading-snug">
+                <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-slate-900">
                   一键招满
                   <br />
                   可信赖的灵活用工
                 </h2>
-                <p className="text-sm text-slate-900/80 leading-relaxed">
+                <p className="text-sm text-slate-800/85 leading-relaxed">
                   触达经过平台筛选的灵人，支持多班次、多门店统一管理。
                   可对接排班、打卡与结算系统，提升用工效率。
                 </p>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-xs">
+              <div className="mt-7 flex flex-wrap gap-3 text-xs">
                 <button
                   type="button"
                   onClick={() => {
                     setRole('employer');
                     scrollToMain();
                   }}
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 font-medium text-white shadow-sm hover:bg-black"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 font-semibold text-white shadow-lg shadow-slate-900/25 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
                 >
                   了解产品 / 立即体验
                 </button>
@@ -508,7 +508,7 @@ export default function App() {
                     setRole('employer');
                     openAuthForRole('employer');
                   }}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-2 font-medium text-slate-900 hover:bg-slate-900/5"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-slate-900/40 bg-white/50 px-6 py-2.5 font-semibold text-slate-900 hover:bg-slate-900/10 hover:border-slate-700/60 transition-all duration-200"
                 >
                   企业登录 / 注册
                 </button>
@@ -521,19 +521,19 @@ export default function App() {
         <div ref={mainRef} className="grid gap-6 md:grid-cols-[1.6fr,1fr]">
           {/* 左侧：列表 / 发布表单 */}
           <div className="space-y-4">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-xl bg-white p-4 shadow-md shadow-slate-200/40 border border-slate-200/60">
               <div>
-                <div className="text-xs text-slate-500 mb-1">
+                <div className="text-xs font-medium text-slate-600 mb-0.5">
                   当前视图：{role === 'worker' ? '灵人页面（岗位列表 + 报名）' : '企业页面（发布岗位 + 报名概览）'}
                 </div>
                 <p className="text-sm text-slate-500">
                   向上滑动即可浏览完整内容，也可以在顶部卡片切换灵人 / 企业视角。
                 </p>
               </div>
-              <div className="inline-flex rounded-full bg-slate-100 p-1 text-[11px] font-medium">
+              <div className="inline-flex rounded-full bg-slate-100 p-1 text-[11px] font-medium ring-1 ring-slate-200/60">
                 <button
-                  className={`px-3 py-1 rounded-full ${
-                    role === 'worker' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'
+                  className={`px-4 py-1.5 rounded-full transition-all duration-200 ${
+                    role === 'worker' ? 'bg-white shadow-md text-slate-900 font-semibold ring-1 ring-slate-200/80' : 'text-slate-500 hover:text-slate-700'
                   }`}
                   onClick={() => setRole('worker')}
                   type="button"
@@ -541,8 +541,8 @@ export default function App() {
                   灵人页面
                 </button>
                 <button
-                  className={`px-3 py-1 rounded-full ${
-                    role === 'employer' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'
+                  className={`px-4 py-1.5 rounded-full transition-all duration-200 ${
+                    role === 'employer' ? 'bg-white shadow-md text-slate-900 font-semibold ring-1 ring-slate-200/80' : 'text-slate-500 hover:text-slate-700'
                   }`}
                   onClick={() => setRole('employer')}
                   type="button"
@@ -561,7 +561,7 @@ export default function App() {
                 >
                   ← 返回岗位列表
                 </button>
-                <div className="rounded-2xl bg-white p-5 shadow-sm border border-slate-100">
+                <div className="rounded-2xl bg-white p-5 shadow-lg shadow-slate-200/40 border border-slate-200/60 ring-1 ring-slate-900/5">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -616,7 +616,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="mt-4 border-t pt-3 text-[11px] text-slate-500">
-                    提示：当前 Demo 仅做前端交互演示，实际产品中可以在此处展示合同签署方式、保险情况、上下班打卡规则等信息。
+                    岗位要求、到岗流程、结算规则及注意事项等详情，请联系用工方确认。
                   </div>
                 </div>
               </div>
@@ -624,7 +624,7 @@ export default function App() {
 
             {role === 'worker' && (!showJobDetail || !selectedJob) && (
               <div className="space-y-4">
-                <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100">
+                <div className="rounded-2xl bg-white p-4 shadow-md shadow-slate-200/40 border border-slate-200/60">
                   <div className="flex flex-wrap gap-3 items-end">
                     <div className="flex-1 min-w-[150px]">
                       <label className="text-xs text-slate-500">城市 / 区域</label>
@@ -723,10 +723,10 @@ export default function App() {
                           return next.slice(0, 6);
                         });
                       }}
-                      className={`w-full text-left rounded-2xl border bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-md ${
+                      className={`w-full text-left rounded-2xl border bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                         selectedJob?.id === job.id
-                          ? 'border-brand/60 shadow-sm ring-1 ring-brand/40'
-                          : 'border-slate-100'
+                          ? 'border-blue-300 shadow-lg shadow-blue-100/50 ring-2 ring-blue-300/60'
+                          : 'border-slate-200/80 shadow-sm hover:shadow-md hover:border-slate-300/80'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-4">
@@ -779,10 +779,10 @@ export default function App() {
 
             {role === 'employer' && (
               <div className="space-y-4">
-                <div className="rounded-2xl bg-brand-soft/60 border border-brand/20 p-4 text-xs text-slate-700">
+                <div className="rounded-2xl bg-blue-50/80 border border-blue-200/60 p-4 text-xs text-slate-700 shadow-sm">
                   <div className="font-medium mb-1">快速发布灵活用工岗位</div>
                   <p>
-                    这里是企业端 Demo，你可以发布岗位（保存在前端内存中），右侧可以实时看到报名情况汇总，用于产品演示与交互验证。
+                    发布岗位后，右侧可实时查看报名情况。岗位与报名数据将保存至平台服务器。
                   </p>
                 </div>
 
@@ -791,7 +791,7 @@ export default function App() {
                     e.preventDefault();
                     openAuthForRole('employer');
                   }}
-                  className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100 space-y-3"
+                  className="rounded-2xl bg-white p-4 shadow-md shadow-slate-200/40 border border-slate-200/60 space-y-3"
                 >
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div>
@@ -909,7 +909,7 @@ export default function App() {
                             // ignore storage errors
                           }
                         }
-                        alert('已重置为默认示例数据（仅清除本地浏览器存储）');
+                        alert('已重置为默认数据。');
                       }}
                       className="rounded-lg border border-rose-200 px-3 py-1.5 text-xs text-rose-600 hover:bg-rose-50"
                     >
@@ -938,12 +938,12 @@ export default function App() {
                       type="submit"
                       className="rounded-lg bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-600"
                     >
-                      {isEmployerLoggedIn ? '发布岗位（Demo）' : '登录企业账号后发布'}
+                      {isEmployerLoggedIn ? '发布岗位' : '登录企业账号后发布'}
                     </button>
                   </div>
                 </form>
 
-                <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100 space-y-2 text-xs">
+                <div className="rounded-2xl bg-white p-4 shadow-md shadow-slate-200/40 border border-slate-200/60 space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <div className="font-medium text-slate-900">已发布岗位管理</div>
                     <div className="text-[11px] text-slate-500">
@@ -1022,7 +1022,7 @@ export default function App() {
           <aside className="space-y-4">
             {role === 'worker' ? (
               <div className="space-y-3">
-                <div className="rounded-2xl bg-white shadow-sm border border-slate-100 p-4">
+                <div className="rounded-2xl bg-white shadow-md shadow-slate-200/40 border border-slate-200/60 p-4 ring-1 ring-slate-900/5">
                   <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
                     一键报名 · 快速匹配
                   </h3>
@@ -1070,12 +1070,12 @@ export default function App() {
                           type="submit"
                           className="mt-1 w-full rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-emerald-600"
                         >
-                          {isWorkerLoggedIn ? '立即报名（前端 Demo）' : '登录灵人账号后报名'}
+                          {isWorkerLoggedIn ? '立即报名' : '登录灵人账号后报名'}
                         </button>
                         <p className="text-[10px] text-slate-400 mt-1.5">
                           {isWorkerLoggedIn
-                            ? '当前为产品原型，报名信息仅存储在本地浏览器内存，不会真实发往服务器。'
-                            : '当前为产品原型，请先以灵人身份登录 / 注册，报名信息仅存储在本地浏览器内存，不会真实发往服务器。'}
+                            ? '报名信息将提交至平台，用工方将根据联系方式与你沟通。'
+                            : '请先以灵人身份登录或注册后再报名。'}
                         </p>
                       </form>
                     </>
@@ -1086,7 +1086,7 @@ export default function App() {
                   )}
                 </div>
 
-                <div className="rounded-2xl border border-slate-100 bg-white p-4 text-xs text-slate-500">
+                <div className="rounded-2xl border border-slate-200/60 bg-white p-4 text-xs text-slate-500 shadow-sm">
                   <div className="font-semibold text-slate-900 mb-1.5 text-sm">如何快速赚钱？</div>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>尽量填写真实准确的个人信息，便于用工方快速沟通。</li>
@@ -1097,13 +1097,13 @@ export default function App() {
               </div>
             ) : (
               <div className="space-y-3">
-                <div className="rounded-2xl bg-white shadow-sm border border-slate-100 p-4">
+                <div className="rounded-2xl bg-white shadow-md shadow-slate-200/40 border border-slate-200/60 p-4 ring-1 ring-slate-900/5">
                   <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
-                    报名概览（当前浏览器会话）
+                    报名概览
                   </h3>
                   {applicationsWithJob.length === 0 ? (
                     <p className="text-xs text-slate-500">
-                      暂无报名数据。你可以用上方表单发布一个岗位，然后切换到「我是灵活用工」身份模拟报名，报名记录会展示在这里。
+                      暂无报名数据。发布岗位后，灵人报名记录将在此展示。
                     </p>
                   ) : (
                     <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
@@ -1141,7 +1141,7 @@ export default function App() {
                     </div>
                   )}
                 </div>
-                <div className="rounded-2xl border border-slate-100 bg-white p-4 text-xs text-slate-500">
+                <div className="rounded-2xl border border-slate-200/60 bg-white p-4 text-xs text-slate-500 shadow-sm">
                   <div className="font-semibold text-slate-900 mb-1.5 text-sm">后续可扩展方向</div>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>接入后端 API，真正存储岗位与报名数据。</li>
@@ -1157,10 +1157,10 @@ export default function App() {
 
       {showAuthModal && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/30 px-4">
-          <div className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-lg">
+          <div className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-xl shadow-slate-300/40 border border-slate-200/60">
             <div className="flex items-center justify-between mb-3">
               <div>
-                <div className="text-xs font-semibold text-brand mb-0.5">账号中心（前端 Demo）</div>
+                <div className="text-xs font-semibold text-brand mb-0.5">账号中心</div>
                 <div className="text-sm font-semibold text-slate-900">
                   {authMode === 'login' ? '登录灵活 Temp-Jobs' : '注册灵活 Temp-Jobs'}
                 </div>
@@ -1234,7 +1234,7 @@ export default function App() {
                 <label className="text-slate-500">手机号 *</label>
                 <input
                   className="mt-1 w-full rounded-lg border border-slate-200 px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand/60 focus:border-brand/60"
-                  placeholder="用于后续登录模拟"
+                  placeholder="11 位手机号"
                   value={authFormPhone}
                   onChange={(e) => setAuthFormPhone(e.target.value)}
                 />
@@ -1244,7 +1244,7 @@ export default function App() {
                 type="submit"
                 className="mt-1 w-full rounded-lg bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-600"
               >
-                {authMode === 'login' ? '登录（前端 Demo）' : '注册并登录（前端 Demo）'}
+                {authMode === 'login' ? '登录' : '注册并登录'}
               </button>
 
               {authUser && (
@@ -1258,7 +1258,7 @@ export default function App() {
               )}
 
               <p className="text-[10px] text-slate-400">
-                当前为前端原型，登录状态仅存储在本地浏览器的 localStorage 中，不会真实发往服务器。
+                登录后可管理报名记录与岗位信息。
               </p>
             </form>
           </div>
